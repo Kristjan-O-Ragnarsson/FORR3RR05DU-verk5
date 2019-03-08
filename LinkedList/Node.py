@@ -54,7 +54,10 @@ class Node:
         if self.data == _item:
             return True
         else:
-            return self._next.find()
+            if self._next is not None:
+                return self._next.find(_item)
+            else:
+                return False
 
     def delete(self, _item: int) -> bool:
         """
@@ -62,21 +65,28 @@ class Node:
         :param _item: item to delete
         :return: bool based on if the item was deleted
         """
-        sys.stdout.write(str(self.data) + "," + str(_item) + "\n")
+        #sys.stdout.write(str(self.data) + "," + str(_item) + "\n")
         if self.data == _item:
-            sys.stdout.write("a")
-            sys.stdout.write("a")
+            #sys.stdout.write("a")
+            #sys.stdout.write("a\n")
 
             try:
+                #sys.stdout.write("b")
+                #sys.stdout.write("b\n")
                 self._prev._next = self._next
                 self._next._prev = self._prev
+                #sys.stdout.write("b2")
+                #sys.stdout.write("b2\n")
             except AttributeError:
-                self._prev._next = self._next
+                #sys.stdout.write("c")
+                #sys.stdout.write("c\n")
+                self._prev._next = None
+                #sys.stdout.write("c2")
+                #sys.stdout.write("c2\n")
             return True
 
         else:
             return self._next.delete(_item)
-
 
 
 if __name__ == '__main__':
