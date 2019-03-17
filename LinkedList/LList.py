@@ -87,10 +87,6 @@ class LList:
             return False
 
 
-
-
-
-
 if __name__ == '__main__':
     _l = LList()
     _l.push(2)
